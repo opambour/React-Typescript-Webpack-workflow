@@ -1,0 +1,49 @@
+{
+    "name": "react-typescript-webpack-workflow",
+    "version": "1.0.0",
+    "description": "Building React Application with React, Typescript and Webpack as the bundler",
+    "main": "dist/backend/server.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "dist/server.js",
+        "start:dev": "nodemon dist/server.js",
+        "build:prod": "webpack --config webpack.config.js --mode=production",
+        "build:dev": "webpack --config webpack.config.js --mode=development",
+        "client:server": "webpack-dev-server --mode=development --open"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/opambour/React-Typescript-Webpack-workflow.git"
+    },
+    "keywords": [
+        "React",
+        "Typescript",
+        "Webpack",
+        "Express",
+        "Node"
+    ],
+    "author": "Michael Abebrese-Agyeman",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/opambour/React-Typescript-Webpack-workflow/issues"
+    },
+    "homepage": "https://github.com/opambour/React-Typescript-Webpack-workflow#readme",
+    "devDependencies": {
+        "@types/react": "^16.3.17",
+        "@types/react-dom": "^16.0.6",
+        "cache-loader": "^1.2.2",
+        "clean-webpack-plugin": "^0.1.19",
+        "fork-ts-checker-webpack-plugin": "^0.4.2",
+        "html-webpack-plugin": "^3.2.0",
+        "react": "^16.4.0",
+        "react-dom": "^16.4.0",
+        "ts-loader": "^4.3.1",
+        "tslint": "^5.10.0",
+        "tslint-loader": "^3.6.0",
+        "tslint-react": "^3.6.0",
+        "typescript": "^2.9.1",
+        "webpack": "^4.11.1",
+        "webpack-cli": "^3.0.3",
+        "webpack-dev-server": "^3.1.4"
+    }
+}

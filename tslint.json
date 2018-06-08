@@ -1,0 +1,61 @@
+{
+    "defaultSeverity": "error",
+    "extends": [
+        "tslint:recommended",
+        "tslint:latest", 
+        "tslint-react"
+    ],
+    "jsRules": {
+        
+    },
+    "rules": {
+        // jsx rules
+        "jsx-wrap-multiline": false,
+
+        // general rules
+        "typedef": [false, "call-signature", "parameter", "member-variable-declaration"],
+        "curly": [true, "ignore-same-line"],
+        "forin": true,
+        "max-classes-per-file": [true, 1],
+        "max-line-length": [true, 240],
+        "no-console": [false, "log", "error"],
+        "no-empty": true,
+        "no-string-literal": false,
+        "no-duplicate-variable": [true, "check-parameters"],
+        "no-implicit-dependencies": [false, "dev", "optional"],
+        "no-invalid-this": false,
+        "no-unused-variable": true,
+        "no-var-keyword": true,
+        "no-var-requires": false,
+        "no-angle-bracket-type-assertion": false,
+        "eofline": true,
+        "indent": [true, "tabs", 2],
+        "linebreak-style": [true, "CRLF"],
+        "no-duplicate-imports": true,
+        "object-literal-sort-keys": false,
+        "trailing-comma": [true, { "multiline": "always", "singleline": "never" }],
+        "array-type": [true, "generic"],
+        "arrow-parens": true,
+        "only-arrow-functions": false,
+        "arrow-return-shorthand": true,
+        "class-name": true,
+        "encoding": true,
+        "import-spacing": true,
+        "interface-name": [true, "always-prefix"],
+        /* requires interface names to start with an “I”*/
+        "match-default-export-name": true,
+        "no-consecutive-blank-lines": [true, 2],
+        "ordered-imports": false,
+        "one-variable-per-declaration": [true, "ignore-for-loop"],
+        "semicolon": [true, "always", "ignore-interfaces"],
+        "triple-equals": [
+            true,
+            "allow-null-check"
+        ],
+        "space-before-function-paren": [false, "always"],
+        "switch-final-break": [true, "always"],
+        "variable-name": [true, "ban-keywords", "check-format", "allow-pascal-case","allow-leading-underscore"],
+        "quotemark": [true, "single", "jsx-double"]
+    },
+    "rulesDirectory": []
+}
