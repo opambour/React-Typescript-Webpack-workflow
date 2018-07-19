@@ -84,7 +84,7 @@ const frontendConfiguration = {
     devtool: 'source-map',
     resolve: {
         // Add `.ts`, `.tsx`, '.js' and '.es6' as a resolvable extension.
-        extensions: ['.tsx', '.ts', '.jsx', '.es6', '.js']
+        extensions: ['.tsx', '.ts', '.jsx', '.es6', '.js', '.json']
     },
     watch: true, // Watch the filesystem for changes
     watchOptions: { // The polling interval for watching (also enable polling)
@@ -93,7 +93,7 @@ const frontendConfiguration = {
         ignored: [/node_modules/, /bower_components/]
     },
     devServer: {
-        contentBase: path.join(__dirname, 'dist/frontend'),
+        contentBase: path.join(__dirname, './public/views'),
         compress: true,
         watchContentBase: true,
         watchOptions: {
@@ -132,6 +132,11 @@ const frontendConfiguration = {
                         }
                     }
                 ]
+            },
+            {
+                enforce: "pre",
+                test: /\.js$/,
+                loader: "source-map-loader"
             }
         ]
     },
@@ -145,9 +150,6 @@ const frontendConfiguration = {
             verbose: true,
             dry: false
         }),
-        new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify('production')
-        }),
         /** HMR allows all kinds of modules to be updated at runtime without the need for a full refresh.
          ** HMR is not intended for use in production.
          */
@@ -158,7 +160,7 @@ const frontendConfiguration = {
         // The HtmlWebpackPlugin simplifies creation of HTML files to serve your webpack bundles. 
         new HtmlWebpackPlugin({
             filename: 'index.html',
-            template: './src/views/index.html'
+            template: './public/views/index.html'
         })
     ]
 };
