@@ -5,11 +5,12 @@
     "main": "dist/backend/server.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
+        "tslint": "tslint --project tsconfig.json -c tslint.json",
         "start": "dist/server.js",
         "start:dev": "nodemon dist/server.js",
         "build:prod": "webpack --config webpack.config.js --mode=production",
-        "build:dev": "webpack --config webpack.config.js --mode=development",
-        "client:server": "webpack-dev-server --mode=development --open"
+        "build:dev": "webpack --config webpack.config.js --mode=development --watch",
+        "client:server": "webpack-dev-server --progress --colors --overlay true --watchContentBase true --historyApiFallback true --mode=development --compress true --hot true --watch --host localhost --port 9000"
     },
     "repository": {
         "type": "git",
@@ -28,15 +29,20 @@
         "url": "https://github.com/opambour/React-Typescript-Webpack-workflow/issues"
     },
     "homepage": "https://github.com/opambour/React-Typescript-Webpack-workflow#readme",
-    "devDependencies": {
-        "@types/react": "^16.3.17",
+    "dependencies": {
+        "@types/node": "^10.7.1",
+        "@types/react": "^16.4.7",
         "@types/react-dom": "^16.0.6",
+        "@types/react-router-dom": "^4.3.0",
+        "react": "^16.4.1",
+        "react-dom": "^16.4.1",
+        "react-router-dom": "^4.3.1"
+    },
+    "devDependencies": {
         "cache-loader": "^1.2.2",
         "clean-webpack-plugin": "^0.1.19",
         "fork-ts-checker-webpack-plugin": "^0.4.2",
         "html-webpack-plugin": "^3.2.0",
-        "react": "^16.4.0",
-        "react-dom": "^16.4.0",
         "source-map-loader": "^0.2.3",
         "ts-loader": "^4.3.1",
         "tslint": "^5.10.0",
@@ -45,6 +51,6 @@
         "typescript": "^2.9.1",
         "webpack": "^4.11.1",
         "webpack-cli": "^3.0.3",
-        "webpack-dev-server": "^3.1.4"
+        "webpack-dev-server": "^3.1.5"
     }
 }

@@ -18,7 +18,6 @@ const backendConfiguration = {
         // Add `.ts` as a resolvable extension.
         extensions: ['.ts']
     },
-    watch: true,
     watchOptions: {
         aggregateTimeout: 300,
         poll: 1000, // refresh and watch every second
@@ -86,25 +85,32 @@ const frontendConfiguration = {
         // Add `.ts`, `.tsx`, '.js' and '.es6' as a resolvable extension.
         extensions: ['.tsx', '.ts', '.jsx', '.es6', '.js', '.json']
     },
-    watch: true, // Watch the filesystem for changes
+    // watch: true, // Watch the filesystem for changes
     watchOptions: { // The polling interval for watching (also enable polling)
         aggregateTimeout: 300,
         poll: 1000, // refresh and watch every second
         ignored: [/node_modules/, /bower_components/]
     },
     devServer: {
-        contentBase: path.join(__dirname, './public/views'),
+        contentBase: path.join(__dirname, 'dist'),
+        // contentBase: './dist',
+        clientLogLevel: 'none',
         compress: true,
-        watchContentBase: true,
+        // historyApiFallback: true,
+        // watchContentBase: true,
         watchOptions: {
             poll: true
         },
-        hot: true,
-        port: 9000,
-        index: 'index.html'
+        // hot: true,
+        // host: '0.0.0.0',
+        // port: 9000, // specify a port number
+        index: 'index.html',
+        //  overlay: true, // show full screen compiler errors,
+        // quiet: true, // nothing except the initial startup information will be written to the console...no errors or warnings from webpack are visible 
+        // socket: 'socket' // The Unix socket to listen to (instead of a host)
     },
     entry: {
-        'frontend/app': './src/frontend/app.tsx'
+        'frontend/index': './src/frontend/index.tsx'
     },
     output: {
         filename: '[name].build.js',
@@ -159,6 +165,7 @@ const frontendConfiguration = {
         }),
         // The HtmlWebpackPlugin simplifies creation of HTML files to serve your webpack bundles. 
         new HtmlWebpackPlugin({
+            title: 'development',
             filename: 'index.html',
             template: './public/views/index.html'
         })

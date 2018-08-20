@@ -9,6 +9,7 @@
         
     },
     "rules": {
+        "align": [true, "parameters", "statements"],
         // jsx rules
         "jsx-wrap-multiline": false,
 
@@ -29,7 +30,7 @@
         "no-var-requires": false,
         "no-angle-bracket-type-assertion": false,
         "eofline": true,
-        "indent": [true, "tabs", 2],
+        "indent": [false, "tabs", 2],
         "linebreak-style": [true, "CRLF"],
         "no-duplicate-imports": true,
         "object-literal-sort-keys": false,
@@ -45,6 +46,7 @@
         /* requires interface names to start with an “I”*/
         "match-default-export-name": true,
         "no-consecutive-blank-lines": [true, 2],
+        "no-trailing-whitespace": false,
         "ordered-imports": false,
         "one-variable-per-declaration": [true, "ignore-for-loop"],
         "semicolon": [true, "always", "ignore-interfaces"],
