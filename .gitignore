@@ -3,3 +3,9 @@ node_modules/
 
 # ignore cache-loader
 .cache-loader/
+
+# ignore workspace
+.idea/workspace.xml
+
+# ignore gitignore file
+.gitignore

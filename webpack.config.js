@@ -141,7 +141,7 @@ const frontendConfiguration = {
             },
             {
                 enforce: "pre",
-                test: /\.js$/,
+                test: /\.(ts|tsx)$/,
                 loader: "source-map-loader"
             }
         ]
@@ -156,18 +156,18 @@ const frontendConfiguration = {
             verbose: true,
             dry: false
         }),
+        // The HtmlWebpackPlugin simplifies creation of HTML files to serve your webpack bundles.
+        new HtmlWebpackPlugin({
+            title: 'development',
+            filename: 'index.html',
+            template: './public/views/index.html'
+        }),
         /** HMR allows all kinds of modules to be updated at runtime without the need for a full refresh.
          ** HMR is not intended for use in production.
          */
         new webpack.HotModuleReplacementPlugin({
             // Options...
             title: 'Dev: Hot Module Replacement...'
-        }),
-        // The HtmlWebpackPlugin simplifies creation of HTML files to serve your webpack bundles. 
-        new HtmlWebpackPlugin({
-            title: 'development',
-            filename: 'index.html',
-            template: './public/views/index.html'
         })
     ]
 };

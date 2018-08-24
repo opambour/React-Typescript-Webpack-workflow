@@ -10,7 +10,7 @@
         "start:dev": "nodemon dist/server.js",
         "build:prod": "webpack --config webpack.config.js --mode=production",
         "build:dev": "webpack --config webpack.config.js --mode=development --watch",
-        "client:server": "webpack-dev-server --progress --colors --overlay true --watchContentBase true --historyApiFallback true --mode=development --compress true --hot true --watch --host localhost --port 9000"
+        "client:server": "webpack-dev-server --warning false --progress --colors --overlay true --watchContentBase true --historyApiFallback true --mode=development --compress true --hot true --watch --host localhost --port 9000"
     },
     "repository": {
         "type": "git",
@@ -34,6 +34,7 @@
         "@types/react": "^16.4.7",
         "@types/react-dom": "^16.0.6",
         "@types/react-router-dom": "^4.3.0",
+        "@types/webpack-env": "^1.13.6",
         "react": "^16.4.1",
         "react-dom": "^16.4.1",
         "react-router-dom": "^4.3.1"
