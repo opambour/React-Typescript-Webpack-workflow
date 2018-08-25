@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require('path');
 
 const backendConfiguration = {
@@ -139,23 +140,75 @@ const frontendConfiguration = {
                     }
                 ]
             },
+            // source map loader
             {
                 enforce: "pre",
                 test: /\.(ts|tsx)$/,
                 loader: "source-map-loader"
-            }
+            },
+
+            // css loader: This enables you to import './style.css' into the file that depends on that styling.
+            {
+                test: /\.css$/,
+                use: [
+                    'style-loader',
+                    'css-loader'
+                ]
+            },
+
+            // scss/sass loader
+            {
+                test: /\.scss$/,
+                use: [
+                    //  "style-loader", // creates style nodes from JS strings
+                    // fallback to style-loader in development
+                    process.env.NODE_ENV !== 'production' ? 'style-loader' : MiniCssExtractPlugin.loader,
+                    "css-loader", // translates CSS into CommonJS
+                    "sass-loader" // compiles Sass to CSS, using Node Sass by default
+                ]
+            },
+
+            // image loader: you can import image in js/jsx file like import Icon from './img/icon.png'
+            {
+                test:  /\.(png|svg|jpg|gif)$/,
+                use: [
+                    'file-loader'
+                ]
+            },
+
+            // fonts loader
+            {
+                test:  /\.(woff|woff2|eot|ttf|otf)$/,
+                use: [
+                    'file-loader'
+                ]
+            },
         ]
     },
     plugins: [
         // Webpack plugin that runs typescript type checker on a separate process
         new ForkTsCheckerWebpackPlugin({ checkSyntacticErrors: true }),
         new webpack.WatchIgnorePlugin([/\.js$/, /\.d\.ts$/]),
+
         // A webpack plugin to remove/clean your build folder(s) before building
         new CleanWebpackPlugin(['dist/frontend/'], {
             // options
             verbose: true,
             dry: false
         }),
+        /*
+        * it's recommended to extract the style sheets into a dedicated file in production using the
+        * MiniCssExtractPlugin. This way your styles are not dependent on JavaScript
+        * USAGE:
+        * @import "~bootstrap/dist/css/bootstrap";
+        * */
+        new MiniCssExtractPlugin({
+            // Options similar to the same options in webpackOptions.output
+            // both options are optional
+            filename: "[name].css",
+            chunkFilename: "[id].css"
+        }),
+
         // The HtmlWebpackPlugin simplifies creation of HTML files to serve your webpack bundles.
         new HtmlWebpackPlugin({
             title: 'development',
